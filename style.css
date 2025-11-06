@@ -154,17 +154,78 @@ a {
 /* ------------------------------------
    Hero Page
    ------------------------------------ */
+/* ------------------------------------
+    Hero Page - MODERN LOOK
+    ------------------------------------ */
 #hero {
+    /* Keep existing background and size */
     background: url('images/hero2.jpg') no-repeat center center/cover;
     color: var(--light-color);
-    justify-content: flex-end; /* Aligns CTA to bottom */
+    /* Changed justification to center everything */
+    justify-content: center; 
+    align-items: center;
+    position: relative; /* Ensure the overlay works */
 }
 
-.hero-cta {
+/* Add a dark overlay for better text contrast, typical in modern heroes */
+#hero::before {
+    content: '';
     position: absolute;
-    bottom: 50px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Subtle gradient for depth, or a solid dark color */
+    background: rgba(0, 0, 0, 0.55); 
+    z-index: 1; /* Place below text, above image */
 }
 
+.hero-content {
+    /* Center the content block */
+    z-index: 2; /* Bring content above the overlay */
+    text-align: center;
+    max-width: 800px;
+    padding: 1rem;
+}
+
+.hero-title {
+    font-size: 5rem; /* Large, bold headline */
+    font-family: var(--font-heading);
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+    text-transform: uppercase;
+    /* Optional: Subtle text shadow for pop */
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); 
+}
+
+.hero-subtitle {
+    font-size: 1.5rem; /* Clear, concise sub-headline */
+    font-family: var(--font-body);
+    font-weight: 400;
+    margin-bottom: 2rem;
+    color: #eee;
+    max-width: 600px;
+    margin: 0 auto 2.5rem; /* Center and space below */
+}
+
+/* Adjust the CTA wrapper */
+.hero-cta-button {
+    /* Remove position absolute, now it flows with content */
+    position: relative; 
+    bottom: initial; 
+}
+
+/* Adjust button size for large screen, already using .btn-large */
+
+/* Media Query for Mobile Responsiveness */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 3rem; /* Smaller headline on mobile */
+    }
+    .hero-subtitle {
+        font-size: 1.1rem; /* Smaller subtitle on mobile */
+    }
+}
 /* ------------------------------------
    Content Page
    ------------------------------------ */

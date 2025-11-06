@@ -13,10 +13,13 @@
     />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script src="scrollEffects.js"></script>
 
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="./components/CardNav.css" />
@@ -26,185 +29,187 @@
     <div id="nav-root"></div>
 
     
-    <!----------------Hero Page ------------------>
     <section id="hero" class="fullscreen-section">
-        <div class="hero-cta">
-            <a href="#contact" class="btn btn-primary">Book Your Service</a>
+      <div class="hero-content">
+        <h1 class="hero-title">Engineering Perfection.</h1>
+        <p class="hero-subtitle">Premium detailing, custom restoration, and performance tuning for your ultimate ride.</p>
+        
+        <div class="hero-cta-button">
+          <a href="#contact" class="btn btn-primary btn-large">Book Your Service</a>
         </div>
+      </div>
     </section>
 
     <main id="content">
-        <!------------Content Page---------------->
 
-       <section id="services" class="fullscreen-section services-grid"> 
-            <a href="#restoration" class="service-card service-1">
-                <h3 class="card-title">Full Restoration</h3>
-                <span class="card-subtitle">Frame-Off Build</span>
-            </a>
-            
-            <a href="#detailing" class="service-card service-2">
-                <h3 class="card-title">Premium Detailing</h3>
-                <span class="card-subtitle">Ceramic & Wax</span>
-            </a>
-            
-            <a href="#tuning" class="service-card service-3">
-                <h3 class="card-title">Performance Tuning</h3>
-                <span class="card-subtitle">Engine Upgrades</span>
-            </a>
-            
-            <a href="#paint" class="service-card service-4">
-                <h3 class="card-title">Custom Paint</h3>
-                <span class="card-subtitle">Design Your Dream</span>
-            </a>
-        </section>
+      <section id="services" class="fullscreen-section services-grid"> 
+        <a href="#restoration" class="service-card service-1">
+          <h3 class="card-title">Full Restoration</h3>
+          <span class="card-subtitle">Frame-Off Build</span>
+        </a>
+        
+        <a href="#detailing" class="service-card service-2">
+          <h3 class="card-title">Premium Detailing</h3>
+          <span class="card-subtitle">Ceramic & Wax</span>
+        </a>
+        
+        <a href="#tuning" class="service-card service-3">
+          <h3 class="card-title">Performance Tuning</h3>
+          <span class="card-subtitle">Engine Upgrades</span>
+        </a>
+        
+        <a href="#paint" class="service-card service-4">
+          <h3 class="card-title">Custom Paint</h3>
+          <span class="card-subtitle">Design Your Dream</span>
+        </a>
+      </section>
 
-        <section id="highlights" class="highlights-section">
-            <h2 class="section-title">Our Latest Work</h2>
-            <div class="highlights-container">
-                
-                <article class="highlight-card">
-                    <div class="highlight-text">
-                        <span>Restoration</span>
-                        <h3>Project 'Red Baron' 1974 Classic</h3>
-                        <p>A complete nut-and-bolt restoration of a rare Italian classic, now winning shows.</p>
-                        <a href="#">View Gallery</a>
-                    </div>
-                    <div class="highlight-image" style="background-image: url('images/redbaron.jpg')">
-                    </div>
-                </article>
-                
-                <article class="highlight-card">
-                    <div class="highlight-text">
-                        <span>Custom Paint</span>
-                        <h3>The 'Neon' Superbike</h3>
-                        <p>This track weapon received a full custom paint job that glows in the dark.</p>
-                        <a href="#">See The Build</a>
-                    </div>
-                    <div class="highlight-image" style="background-image: url('https://cdnb.artstation.com/p/assets/images/images/048/383/831/large/hans-hc-capture.jpg?1649889957')">
-                    </div>
-                </article>
-
-                <article class="highlight-card card-bottom-image">
-                    <div class="highlight-text">
-                        <span>Event</span>
-                        <h3>MotoSpa Tech Day 2026</h3>
-                        <p>We're opening our doors! Discover our latest techniques and see our projects.</p>
-                        <a href="#">RSVP Now</a>
-                    </div>
-                    <div class="highlight-image" style="background-image: url('images/event.jpg')">
-                    </div>
-                </article>
-
+      <section id="highlights" class="highlights-section">
+        <h2 class="section-title">Our Latest Work</h2>
+        <div class="highlights-container">
+          
+          <article class="highlight-card">
+            <div class="highlight-text">
+              <span>Restoration</span>
+              <h3>Project 'Red Baron' 1974 Classic</h3>
+              <p>A complete nut-and-bolt restoration of a rare Italian classic, now winning shows.</p>
+              <a href="#">View Gallery</a>
             </div>
-        </section>
-
-        <section id="testimonials" class="testimonials-section">
-            <div class="testimonial-slider">
-                <div class="testimonial-track">
-                    <div class="testimonial">"My bike looks better than new!" - Alex R.</div>
-                    <div class="testimonial">"Incredible attention to detail." - Sarah K.</div>
-                    <div class="testimonial">"The only place I trust with my collection." - Mike D.</div>
-                    <div class="testimonial">"Flawless paint job. Absolute artists." - Tom B.</div>
-                    
-                    <div class="testimonial">"My bike looks better than new!" - Alex R.</div>
-                    <div class="testimonial">"Incredible attention to detail." - Sarah K.</div>
-                    <div class="testimonial">"The only place I trust with my collection." - Mike D.</div>
-                    <div class="testimonial">"Flawless paint job. Absolute artists." - Tom B.</div>
-                </div>
+            <div class="highlight-image" style="background-image: url('images/redbaron.jpg')">
             </div>
-        </section>
+          </article>
+          
+          <article class="highlight-card">
+            <div class="highlight-text">
+              <span>Custom Paint</span>
+              <h3>The 'Neon' Superbike</h3>
+              <p>This track weapon received a full custom paint job that glows in the dark.</p>
+              <a href="#">See The Build</a>
+            </div>
+            <div class="highlight-image" style="background-image: url('https://cdnb.artstation.com/p/assets/images/images/048/383/831/large/hans-hc-capture.jpg?1649889957')">
+            </div>
+          </article>
 
-        <section id="contact-cta" class="cta-section">
-            <h2>Ready to Restore Your Ride?</h2>
-            <p>Let our experts bring your vision to life. Contact us today for a free consultation.</p>
-            <a href="#contact" class="btn btn-primary btn-large">Get in Touch</a>
-        </section>
+          <article class="highlight-card card-bottom-image">
+            <div class="highlight-text">
+              <span>Event</span>
+              <h3>MotoSpa Tech Day 2026</h3>
+              <p>We're opening our doors! Discover our latest techniques and see our projects.</p>
+              <a href="#">RSVP Now</a>
+            </div>
+            <div class="highlight-image" style="background-image: url('images/event.jpg')">
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section id="testimonials" class="testimonials-section">
+        <div class="testimonial-slider">
+          <div class="testimonial-track">
+            <div class="testimonial">"My bike looks better than new!" - Alex R.</div>
+            <div class="testimonial">"Incredible attention to detail." - Sarah K.</div>
+            <div class="testimonial">"The only place I trust with my collection." - Mike D.</div>
+            <div class="testimonial">"Flawless paint job. Absolute artists." - Tom B.</div>
+            
+            <div class="testimonial">"My bike looks better than new!" - Alex R.</div>
+            <div class="testimonial">"Incredible attention to detail." - Sarah K.</div>
+            <div class="testimonial">"The only place I trust with my collection." - Mike D.</div>
+            <div class="testimonial">"Flawless paint job. Absolute artists." - Tom B.</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact-cta" class="cta-section">
+        <h2>Ready to Restore Your Ride?</h2>
+        <p>Let our experts bring your vision to life. Contact us today for a free consultation.</p>
+        <a href="#contact" class="btn btn-primary btn-large">Get in Touch</a>
+      </section>
 
     </main>
-    <!--------------Footer-------------------->
+    
     <footer id="contact" class="site-footer">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <h3>MotoSpa</h3>
-                <p>Premium care for your premium ride. Established 2005.</p>
-            </div>
-            
-            <div class="footer-links-1">
-                <h4>Explore</h4>
-                <ul>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#highlights">Our Work</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#">Blog</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-links-2">
-                <h4>Services</h4>
-                <ul>
-                    <li><a href="#restoration">Restoration</a></li>
-                    <li><a href="#services">Detailing</a></li>
-                    <li><a href="#services">Tuning</a></li>
-                    <li><a href="#services">Custom Paint</a></li>
-                </ul>
-            </div>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>MotoSpa</h3>
+          <p>Premium care for your premium ride. Established 2005.</p>
         </div>
-        <div class="footer-copy">
-            <p>&copy; 2025 MotoSpa. All rights reserved.</p>
+        
+        <div class="footer-links-1">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#highlights">Our Work</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
         </div>
+        
+        <div class="footer-links-2">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#restoration">Restoration</a></li>
+            <li><a href="#services">Detailing</a></li>
+            <li><a href="#services">Tuning</a></li>
+            <li><a href="#services">Custom Paint</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2025 MotoSpa. All rights reserved.</p>
+      </div>
     </footer>
-    <!-- 🧩 React Component -->
-  <script type="text/babel" src="./components/CardNav.js" data-presets="react"></script>
+    
+    <script type="text/babel" src="./components/CardNav.js" data-presets="react"></script>
 
-  <!-- 🧠 Initialize App -->
-  <script type="text/babel">
-    const { createRoot } = ReactDOM;
+    <script type="text/babel">
+      const { createRoot } = ReactDOM;
 
-    const items = [
-      {
-        label: "About",
-        bgColor: "#0D0716",
-        textColor: "#fff",
-        links: [
-          { label: "Company", ariaLabel: "About Company" },
-          { label: "Careers", ariaLabel: "About Careers" }
-        ]
-      },
-      {
-        label: "Projects",
-        bgColor: "#170D27",
-        textColor: "#fff",
-        links: [
-          { label: "Featured", ariaLabel: "Featured Projects" },
-          { label: "Case Studies", ariaLabel: "Project Case Studies" }
-        ]
-      },
-      {
-        label: "Contact",
-        bgColor: "#271E37",
-        textColor: "#fff",
-        links: [
-          { label: "Email", ariaLabel: "Email us" },
-          { label: "Twitter", ariaLabel: "Twitter" },
-          { label: "LinkedIn", ariaLabel: "LinkedIn" }
-        ]
-      }
-    ];
+      const items = [
+        {
+          label: "About",
+          bgColor: "#0D0716",
+          textColor: "#fff",
+          links: [
+            { label: "Company", ariaLabel: "About Company" },
+            { label: "Careers", ariaLabel: "About Careers" }
+          ]
+        },
+        {
+          label: "Projects",
+          bgColor: "#170D27",
+          textColor: "#fff",
+          links: [
+            { label: "Featured", ariaLabel: "Featured Projects" },
+            { label: "Case Studies", ariaLabel: "Project Case Studies" }
+          ]
+        },
+        {
+          label: "Contact",
+          bgColor: "#271E37",
+          textColor: "#fff",
+          links: [
+            { label: "Email", ariaLabel: "Email us" },
+            { label: "Twitter", ariaLabel: "Twitter" },
+            { label: "LinkedIn", ariaLabel: "LinkedIn" }
+          ]
+        }
+      ];
 
-    const App = () => (
-      <CardNav
-        logoText="MotoSpa"
-        items={items}
-        baseColor="#fff"
-        menuColor="#000"
-        buttonBgColor="#111"
-        buttonTextColor="#fff"
-        ease="power3.out"
-      />
-    );
+      const App = () => (
+        <CardNav
+          logoText="MotoSpa"
+          items={items}
+          baseColor="#fff"
+          menuColor="#000"
+          buttonBgColor="#111"
+          buttonTextColor="#fff"
+          ease="power3.out"
+        />
+      );
 
-    const root = createRoot(document.getElementById("nav-root"));
-    root.render(<App />);
-  </script>
-</body>
+      const root = createRoot(document.getElementById("nav-root"));
+      root.render(<App />);
+    </script>
+  </body>
 </html>

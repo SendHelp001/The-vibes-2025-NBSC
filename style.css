@@ -1,0 +1,519 @@
+/* ------------------------------------
+   Global Styles & Variables
+   ------------------------------------ */
+:root {
+    --primary-color: #D20000; /* A strong motorcycle red */
+    --secondary-color: #222;
+    --dark-color: #000;
+    --light-color: #fff;
+    --body-bg: #f4f4f4;
+    --font-heading: 'Aldrich', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    background: var(--body-bg);
+    color: var(--secondary-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.fullscreen-section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px; /* Pill shape */
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--light-color);
+}
+.btn-primary:hover {
+    background: #a00; /* Darker red */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.btn-secondary {
+    background: var(--secondary-color);
+    color: var(--light-color);
+}
+.btn-secondary:hover {
+    background: #444;
+}
+
+.btn-large {
+    font-size: 1.1rem;
+    padding: 1rem 2.5rem;
+}
+
+/* ------------------------------------
+   Navbar
+   ------------------------------------ */
+.navbar {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 700px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 50px; /* Pill shape */
+    padding: 0.5rem 1rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.brand {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--dark-color);
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 0.8rem;
+}
+
+.nav-links li a {
+    color: var(--secondary-color);
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: var(--primary-color);
+}
+
+/* ------------------------------------
+   Hero Page
+   ------------------------------------ */
+#hero {
+    background: url('images/hero2.jpg') no-repeat center center/cover;
+    color: var(--light-color);
+    justify-content: flex-end; /* Aligns CTA to bottom */
+}
+
+.hero-cta {
+    position: absolute;
+    bottom: 50px;
+}
+
+/* ------------------------------------
+   Content Page
+   ------------------------------------ */
+/* 1. Services 2x2 Grid - High Impact Quadrants */
+#services {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    width: 100%;
+    height: calc(100vh - 80px);
+    min-height: 700px;
+    margin: 0;
+    padding: 0;
+}
+
+.service-card {
+    /* Force each card to fully occupy its grid cell */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* Make links behave as full-size blocks */
+    width: 100%;
+    height: 100%;
+
+    /* Ducati-style look */
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    font-family: 'Ducati Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.service-card:hover {
+    transform: scale(1.02);
+    z-index: 2;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.service-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    transition: background 0.3s ease;
+}
+
+.service-card:hover::before {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    position: relative;
+    font-size: 2.8rem;
+    z-index: 2;
+    margin: 0;
+}
+
+.card-subtitle {
+    position: relative;
+    font-size: 1.1rem;
+    color: #ff0000;
+    letter-spacing: 2px;
+    z-index: 2;
+}
+
+/* Example Ducati-style backgrounds */
+.service-1 {
+    background-image: url('https://i.pinimg.com/736x/10/49/79/1049796a75e7e12f32c45e0995934733.jpg');
+}
+.service-2 {
+    background-image: url('https://as1.ftcdn.net/jpg/04/41/83/74/1000_F_441837432_KsvUodM8NU5JIRbSAyUV5FQrkiMMViPv.jpg');
+}
+.service-3 {
+    background-image: url('https://images.unsplash.com/photo-1623006080903-2c6cbf25b12c?q=80&w=1500');
+}
+.service-4 {
+    background-image: url('https://images.unsplash.com/photo-1616448857924-5e91ccec93f8?q=80&w=1500');
+}
+
+/* Responsive Adjustments for Services */
+@media (max-width: 768px) {
+    #services {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 50vh); /* Each card takes half the mobile screen height */
+        height: auto; 
+        min-height: auto;
+    }
+
+    .card-title {
+        font-size: 2rem;
+    }
+    .card-subtitle {
+        font-size: 1rem;
+    }
+}
+
+/* 2. Highlights */
+.highlights-section {
+    padding: 4rem 2rem;
+    background: var(--body-bg);
+}
+
+.highlights-container {
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.highlight-card {
+    display: flex;
+    background: var(--light-color);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    overflow: hidden;
+    border-left: 5px solid var(--primary-color);
+}
+
+.highlight-text {
+    padding: 2rem;
+    flex: 3; /* Takes 3/5 of the space */
+}
+.highlight-text span {
+    display: block;
+    text-transform: uppercase;
+    color: #777;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+.highlight-text h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+.highlight-text p {
+    font-size: 1rem;
+}
+.highlight-text a {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.highlight-image {
+    flex: 2; /* Takes 2/5 of the space */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 250px;
+    transition: transform 0.4s ease;
+}
+.highlight-card:hover .highlight-image {
+    transform: scale(1.05);
+}
+
+/* Card 3 (Bottom Image) Variant */
+.highlight-card.card-bottom-image {
+    flex-direction: column;
+}
+.highlight-card.card-bottom-image .highlight-image {
+    flex: none; /* Reset flex */
+    width: 100%;
+    height: 300px;
+}
+
+/* 3. Testimonials */
+.testimonials-section {
+    height: 33vh;
+    background: var(--dark-color);
+    color: var(--light-color);
+    display: flex;
+    align-items: center;
+    overflow: hidden; /* Important for marquee */
+}
+
+.testimonial-slider {
+    width: 100%;
+}
+
+.testimonial-track {
+    display: flex;
+    width: max-content; /* Key for animation */
+    /* Animation: 40s duration, linear (constant speed), infinite loop */
+    animation: scroll 40s linear infinite;
+}
+
+.testimonial {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    padding: 0 3rem;
+    white-space: nowrap; /* Prevent text wrapping */
+    color: #ccc;
+}
+.testimonial:nth-child(even) {
+    color: var(--light-color); /* Alternate color slightly */
+}
+
+/* Keyframes for the scrolling animation */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* * Scrolls to the halfway point (where the duplicates begin).
+         * The animation restarts, creating a seamless loop.
+        */
+        transform: translateX(-50%);
+    }
+}
+
+/* 4. Final CTA */
+.cta-section {
+    background: var(--light-color);
+    padding: 5rem 2rem;
+    text-align: center;
+}
+.cta-section h2 {
+    font-size: 2.8rem;
+}
+.cta-section p {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    font-size: 1.1rem;
+}
+
+
+/* ------------------------------------
+   Footer
+   ------------------------------------ */
+.site-footer {
+    background: var(--secondary-color);
+    color: #aaa;
+    padding: 4rem 2rem 2rem;
+}
+
+/* This is the 5-column grid you specified */
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-column-gap: 20px; /* Use gap instead of separate properties */
+    grid-row-gap: 5px;
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+}
+
+/* Div 1: Spans first 3 columns */
+.footer-brand {
+    grid-area: 1 / 1 / 2 / 4;
+}
+
+/* Div 2: Spans 4th column */
+.footer-links-1 {
+    grid-area: 1 / 4 / 2 / 5;
+}
+
+/* Div 3: Spans 5th column */
+.footer-links-2 {
+    grid-area: 1 / 5 / 2 / 6;
+}
+
+/* Footer Content Styling */
+.footer-brand h3 {
+    font-size: 2.5rem;
+    color: var(--light-color);
+    margin-bottom: 0.5rem;
+}
+.footer-brand p {
+    font-size: 1rem;
+    max-width: 300px;
+}
+
+.site-footer h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--light-color);
+    text-transform: uppercase;
+}
+
+.site-footer ul {
+    list-style: none;
+}
+
+.site-footer ul li {
+    margin-bottom: 0.5rem;
+}
+
+.site-footer ul li a {
+    color: #aaa;
+    transition: color 0.3s ease;
+}
+
+.site-footer ul li a:hover {
+    color: var(--primary-color);
+}
+
+.footer-copy {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid #444;
+    font-size: 0.9rem;
+}
+
+/* ------------------------------------
+   Responsive Adjustments
+   ------------------------------------ */
+@media (max-width: 768px) {
+    /* Make navbar links stack (example) */
+    .nav-links {
+        display: none; /* Hide for a real burger menu */
+    }
+    
+    /* Stack services grid */
+    #services {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        height: auto; /* Let it grow */
+        min-height: 100vh;
+    }
+    
+    /* Stack highlight cards */
+    .highlight-card {
+        flex-direction: column;
+    }
+    .highlight-card .highlight-image {
+        min-height: 200px;
+    }
+    
+    /* Stack footer grid */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .footer-brand,
+    .footer-links-1,
+    .footer-links-2 {
+        grid-area: auto; /* Reset grid area */
+        margin-bottom: 2rem;
+    }
+    .footer-brand p {
+        margin: auto;
+    }
+}

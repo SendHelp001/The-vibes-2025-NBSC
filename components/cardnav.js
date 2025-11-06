@@ -1,12 +1,8 @@
-import { useLayoutEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-// use your own icon import if react-icons is not available
-import { GoArrowUpRight } from 'react-icons/go';
-import './CardNav.css';
+const { useLayoutEffect, useRef, useState } = React;
+const { gsap } = window;
 
 const CardNav = ({
-  logo,
-  logoAlt = 'Logo',
+  logoText = 'MotoSpa',
   items,
   className = '',
   ease = 'power3.out',
@@ -29,27 +25,21 @@ const CardNav = ({
     if (isMobile) {
       const contentEl = navEl.querySelector('.card-nav-content');
       if (contentEl) {
-        const wasVisible = contentEl.style.visibility;
-        const wasPointerEvents = contentEl.style.pointerEvents;
-        const wasPosition = contentEl.style.position;
-        const wasHeight = contentEl.style.height;
-
+        const prev = {
+          visibility: contentEl.style.visibility,
+          pointerEvents: contentEl.style.pointerEvents,
+          position: contentEl.style.position,
+          height: contentEl.style.height
+        };
         contentEl.style.visibility = 'visible';
         contentEl.style.pointerEvents = 'auto';
         contentEl.style.position = 'static';
         contentEl.style.height = 'auto';
-
         contentEl.offsetHeight;
-
         const topBar = 60;
         const padding = 16;
         const contentHeight = contentEl.scrollHeight;
-
-        contentEl.style.visibility = wasVisible;
-        contentEl.style.pointerEvents = wasPointerEvents;
-        contentEl.style.position = wasPosition;
-        contentEl.style.height = wasHeight;
-
+        Object.assign(contentEl.style, prev);
         return topBar + contentHeight + padding;
       }
     }
@@ -59,42 +49,27 @@ const CardNav = ({
   const createTimeline = () => {
     const navEl = navRef.current;
     if (!navEl) return null;
-
     gsap.set(navEl, { height: 60, overflow: 'hidden' });
     gsap.set(cardsRef.current, { y: 50, opacity: 0 });
 
     const tl = gsap.timeline({ paused: true });
-
-    tl.to(navEl, {
-      height: calculateHeight,
-      duration: 0.4,
-      ease
-    });
-
+    tl.to(navEl, { height: calculateHeight, duration: 0.4, ease });
     tl.to(cardsRef.current, { y: 0, opacity: 1, duration: 0.4, ease, stagger: 0.08 }, '-=0.1');
-
     return tl;
   };
 
   useLayoutEffect(() => {
     const tl = createTimeline();
     tlRef.current = tl;
-
-    return () => {
-      tl?.kill();
-      tlRef.current = null;
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () => tl?.kill();
   }, [ease, items]);
 
   useLayoutEffect(() => {
     const handleResize = () => {
       if (!tlRef.current) return;
-
       if (isExpanded) {
         const newHeight = calculateHeight();
         gsap.set(navRef.current, { height: newHeight });
-
         tlRef.current.kill();
         const newTl = createTimeline();
         if (newTl) {
@@ -104,15 +79,11 @@ const CardNav = ({
       } else {
         tlRef.current.kill();
         const newTl = createTimeline();
-        if (newTl) {
-          tlRef.current = newTl;
-        }
+        if (newTl) tlRef.current = newTl;
       }
     };
-
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isExpanded]);
 
   const toggleMenu = () => {
@@ -150,7 +121,9 @@ const CardNav = ({
           </div>
 
           <div className="logo-container">
-            <img src={logo} alt={logoAlt} className="logo" />
+            <span className="logo" style={{ fontFamily: 'Aldrich, sans-serif', fontSize: '22px' }}>
+              {logoText}
+            </span>
           </div>
 
           <button
@@ -172,9 +145,9 @@ const CardNav = ({
             >
               <div className="nav-card-label">{item.label}</div>
               <div className="nav-card-links">
-                {item.links?.map((lnk, i) => (
-                  <a key={`${lnk.label}-${i}`} className="nav-card-link" href={lnk.href} aria-label={lnk.ariaLabel}>
-                    <GoArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
+                {(item.links || []).map((lnk, i) => (
+                  <a key={`${lnk.label}-${i}`} className="nav-card-link" href={lnk.href || '#'} aria-label={lnk.ariaLabel}>
+                    <span style={{ display: 'inline-flex', transform: 'translateY(1px)' }}>↗</span>
                     {lnk.label}
                   </a>
                 ))}
@@ -187,4 +160,4 @@ const CardNav = ({
   );
 };
 
-export default CardNav;
+window.CardNav = CardNav;

@@ -1,33 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MotoSpa - Premium Motorcycle Care</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-    <!--------------Navbar---------------------->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#hero" class="brand">MotoSpa</a>
-            <ul class="nav-links">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#restoration">Restoration</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Aldrich&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./components/CardNav.css" />
+  </head>
+  <body>
+
+    <div id="nav-root"></div>
+
     
     <!----------------Hero Page ------------------>
     <section id="hero" class="fullscreen-section">
@@ -72,7 +69,7 @@
                         <p>A complete nut-and-bolt restoration of a rare Italian classic, now winning shows.</p>
                         <a href="#">View Gallery</a>
                     </div>
-                    <div class="highlight-image" style="background-image: url('https://via.placeholder.com/600x400/555/fff?text=Restoration+Project')">
+                    <div class="highlight-image" style="background-image: url('images/redbaron.jpg')">
                     </div>
                 </article>
                 
@@ -83,7 +80,7 @@
                         <p>This track weapon received a full custom paint job that glows in the dark.</p>
                         <a href="#">See The Build</a>
                     </div>
-                    <div class="highlight-image" style="background-image: url('https://via.placeholder.com/600x400/444/fff?text=Custom+Paint')">
+                    <div class="highlight-image" style="background-image: url('https://cdnb.artstation.com/p/assets/images/images/048/383/831/large/hans-hc-capture.jpg?1649889957')">
                     </div>
                 </article>
 
@@ -94,7 +91,7 @@
                         <p>We're opening our doors! Discover our latest techniques and see our projects.</p>
                         <a href="#">RSVP Now</a>
                     </div>
-                    <div class="highlight-image" style="background-image: url('https://via.placeholder.com/800x400/333/fff?text=Tech+Day+2026')">
+                    <div class="highlight-image" style="background-image: url('images/event.jpg')">
                     </div>
                 </article>
 
@@ -156,6 +153,58 @@
             <p>&copy; 2025 MotoSpa. All rights reserved.</p>
         </div>
     </footer>
+    <!-- 🧩 React Component -->
+  <script type="text/babel" src="./components/CardNav.js" data-presets="react"></script>
 
+  <!-- 🧠 Initialize App -->
+  <script type="text/babel">
+    const { createRoot } = ReactDOM;
+
+    const items = [
+      {
+        label: "About",
+        bgColor: "#0D0716",
+        textColor: "#fff",
+        links: [
+          { label: "Company", ariaLabel: "About Company" },
+          { label: "Careers", ariaLabel: "About Careers" }
+        ]
+      },
+      {
+        label: "Projects",
+        bgColor: "#170D27",
+        textColor: "#fff",
+        links: [
+          { label: "Featured", ariaLabel: "Featured Projects" },
+          { label: "Case Studies", ariaLabel: "Project Case Studies" }
+        ]
+      },
+      {
+        label: "Contact",
+        bgColor: "#271E37",
+        textColor: "#fff",
+        links: [
+          { label: "Email", ariaLabel: "Email us" },
+          { label: "Twitter", ariaLabel: "Twitter" },
+          { label: "LinkedIn", ariaLabel: "LinkedIn" }
+        ]
+      }
+    ];
+
+    const App = () => (
+      <CardNav
+        logoText="MotoSpa"
+        items={items}
+        baseColor="#fff"
+        menuColor="#000"
+        buttonBgColor="#111"
+        buttonTextColor="#fff"
+        ease="power3.out"
+      />
+    );
+
+    const root = createRoot(document.getElementById("nav-root"));
+    root.render(<App />);
+  </script>
 </body>
 </html>
